@@ -5,17 +5,22 @@ extends RigidBody2D
 # var b = "textvar"
 
 var speed = 5
+var jump_height = 150
+var is_jumping = false
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass
 
-func _process(delta):
-	# Called every frame. Delta is time since last frame.
-	# Update game logic here.
+func _physics_process(delta):
+	
 	if Input.is_action_just_pressed("player_jump"):
-		self.apply_impulse(Vector2(0,0), Vector2(0,-50))
+		if self.is_jumping == false:
+			$Timer.start()
+		else:
+			pass
+		self.apply_impulse(Vector2(0,0), Vector2(0,-jump_height))
 	if Input.is_action_pressed("player_down"):
 		print("down bro")
 	if Input.is_action_pressed("player_left"):
@@ -23,3 +28,8 @@ func _process(delta):
 	if Input.is_action_pressed("player_right"):
 		self.apply_impulse(Vector2(0,0), Vector2(speed,0))
 	pass
+
+
+func _on_Timer_timeout():
+	self.is_jumping = false
+	pass # replace with function body
