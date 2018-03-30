@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 31.9565, 32.0836 )
 
-[node name="player" type="RigidBody2D" index="0"]
+[node name="player" type="RigidBody2D"]
 
 position = Vector2( 615.15, 437.44 )
 input_pickable = false
@@ -46,8 +46,8 @@ shape = SubResource( 1 )
 [node name="Timer" type="Timer" parent="." index="2"]
 
 process_mode = 1
-wait_time = 5.0
-one_shot = false
+wait_time = 3.0
+one_shot = true
 autostart = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

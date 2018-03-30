@@ -13,14 +13,24 @@ func _ready():
 	# Initialization here
 	pass
 
+func _process(delta):
+	if Input.is_action_just_pressed("player_place_box"):
+		var new_block = load("res://block.tscn").instance()
+		$"../".add_child(new_block)
+		new_block.position = get_global_mouse_position()
+		print("block here")
+	pass
+
 func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("player_jump"):
 		if self.is_jumping == false:
+			self.is_jumping = true
 			$Timer.start()
-		else:
+			self.apply_impulse(Vector2(0,0), Vector2(0,-jump_height))
+		elif self.is_jumping == true:
+			print("why")
 			pass
-		self.apply_impulse(Vector2(0,0), Vector2(0,-jump_height))
 	if Input.is_action_pressed("player_down"):
 		print("down bro")
 	if Input.is_action_pressed("player_left"):
@@ -31,5 +41,6 @@ func _physics_process(delta):
 
 
 func _on_Timer_timeout():
+	print("done")
 	self.is_jumping = false
 	pass # replace with function body

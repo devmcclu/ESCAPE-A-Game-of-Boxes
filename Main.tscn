@@ -5,7 +5,7 @@
 [ext_resource path="res://wall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://block.tscn" type="PackedScene" id=4]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" index="0"]
 
 [node name="background" type="Sprite" parent="." index="0"]
 
@@ -41,6 +41,5 @@ _sections_unfolded = [ "Angular", "Transform" ]
 [node name="block" parent="." index="5" instance=ExtResource( 4 )]
 
 position = Vector2( 857.656, 542.957 )
-mode = 2
 
 
