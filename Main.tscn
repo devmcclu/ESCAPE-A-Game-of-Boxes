@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Art/background.png" type="Texture" id=1]
-[ext_resource path="res://Art/player.png" type="Texture" id=2]
-[ext_resource path="res://wall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player.gd" type="Script" id=2]
+[ext_resource path="res://Art/player.png" type="Texture" id=3]
+[ext_resource path="res://wall.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -24,7 +25,7 @@ position = Vector2( 615.15, 437.44 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
-mode = 0
+mode = 2
 mass = 1.0
 friction = 1.0
 bounce = 0.0
@@ -39,23 +40,40 @@ linear_velocity = Vector2( 0, 0 )
 linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="player_sprite" type="Sprite" parent="player" index="0"]
 
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player" index="1"]
 
 shape = SubResource( 1 )
 
-[node name="wall" parent="." index="2" instance=ExtResource( 3 )]
+[node name="wall" parent="." index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 514.241, 609.514 )
 scale = Vector2( 17.3557, 1 )
 mode = 1
+
+[node name="wall2" parent="." index="3" instance=ExtResource( 4 )]
+
+position = Vector2( 1.77435, 11.215 )
+rotation = 1.5708
+scale = Vector2( 17.3557, 1 )
+mode = 1
+_sections_unfolded = [ "Angular", "Transform" ]
+
+[node name="wall3" parent="." index="4" instance=ExtResource( 4 )]
+
+position = Vector2( 1036.81, 3.6416 )
+rotation = 1.5708
+scale = Vector2( 17.3557, 1 )
+mode = 1
+_sections_unfolded = [ "Angular", "Transform" ]
 
 
