@@ -5,7 +5,7 @@
 [ext_resource path="res://wall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://block.tscn" type="PackedScene" id=4]
 
-[node name="Main" type="Node" index="0"]
+[node name="Main" type="Node"]
 
 [node name="background" type="Sprite" parent="." index="0"]
 
@@ -16,7 +16,9 @@ _sections_unfolded = [ "Z Index" ]
 
 [node name="player" parent="." index="1" instance=ExtResource( 2 )]
 
-[node name="wall" parent="." index="2" instance=ExtResource( 3 )]
+[node name="wall" parent="." index="2" groups=[
+"floor",
+] instance=ExtResource( 3 )]
 
 position = Vector2( 514.241, 609.514 )
 scale = Vector2( 17.3557, 1 )

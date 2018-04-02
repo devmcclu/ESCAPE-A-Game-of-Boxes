@@ -5,7 +5,7 @@ extends RigidBody2D
 # var b = "textvar"
 
 var speed = 5
-var jump_height = 150
+var jump_height = 200
 var is_jumping = false
 
 func _ready():
@@ -42,5 +42,11 @@ func _physics_process(delta):
 
 func _on_Timer_timeout():
 	print("done")
+	self.is_jumping = false
+	pass # replace with function body
+
+
+func _on_player_body_entered(body):
+	print("floor")
 	self.is_jumping = false
 	pass # replace with function body
