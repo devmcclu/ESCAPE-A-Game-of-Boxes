@@ -1,30 +1,41 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Art/background.png" type="Texture" id=1]
-[ext_resource path="res://player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://wall.tscn" type="PackedScene" id=3]
-[ext_resource path="res://block.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Art/background.png" type="Texture" id=2]
+[ext_resource path="res://GUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://wall.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 495.888, 10 )
 
 [node name="Main" type="Node"]
+
+script = ExtResource( 1 )
+blocks = 9
 
 [node name="background" type="Sprite" parent="." index="0"]
 
 position = Vector2( 521.715, 308.985 )
 scale = Vector2( 17.0875, 10.4661 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 _sections_unfolded = [ "Z Index" ]
 
-[node name="player" parent="." index="1" instance=ExtResource( 2 )]
+[node name="GUI" parent="." index="1" instance=ExtResource( 3 )]
 
-[node name="wall" parent="." index="2" groups=[
+[node name="player" parent="." index="2" instance=ExtResource( 4 )]
+
+[node name="wall" parent="." index="3" groups=[
 "floor",
-] instance=ExtResource( 3 )]
+] instance=ExtResource( 5 )]
 
 position = Vector2( 514.241, 609.514 )
 scale = Vector2( 17.3557, 1 )
 mode = 1
 
-[node name="wall2" parent="." index="3" instance=ExtResource( 3 )]
+[node name="wall2" parent="." index="4" instance=ExtResource( 5 )]
 
 position = Vector2( -5.79901, 94.5225 )
 rotation = 1.5708
@@ -32,7 +43,7 @@ scale = Vector2( 17.3557, 1 )
 mode = 1
 _sections_unfolded = [ "Angular", "Transform" ]
 
-[node name="wall3" parent="." index="4" instance=ExtResource( 3 )]
+[node name="wall3" parent="." index="5" instance=ExtResource( 5 )]
 
 position = Vector2( 1036.81, 86.949 )
 rotation = 1.5708
@@ -40,8 +51,22 @@ scale = Vector2( 17.3557, 1 )
 mode = 1
 _sections_unfolded = [ "Angular", "Transform" ]
 
-[node name="block" parent="." index="5" instance=ExtResource( 4 )]
+[node name="win_area" type="Area2D" parent="." index="6"]
 
-position = Vector2( 857.656, 542.957 )
+position = Vector2( 517.018, -24.1174 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="win_area" index="0"]
+
+shape = SubResource( 1 )
 
 
