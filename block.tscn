@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 31.9894, 32.0128 )
+extents = Vector2( 31.9894, 20.5234 )
 
 [node name="block" type="RigidBody2D" groups=[
 "floor",
@@ -37,6 +37,8 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
+position = Vector2( 0, -28.1468 )
+scale = Vector2( 1, 0.196099 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 

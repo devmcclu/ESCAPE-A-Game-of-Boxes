@@ -12,11 +12,11 @@
 custom_solver_bias = 0.0
 extents = Vector2( 495.888, 10 )
 
-[node name="Main" type="Node" index="0"]
+[node name="Main" type="Node"]
 
 script = ExtResource( 1 )
 blocks = 9
-next_level = "res://Level_2.tscn"
+next_level = "res://Level_X.tscn"
 
 [node name="background" type="Sprite" parent="." index="0"]
 
@@ -29,7 +29,7 @@ _sections_unfolded = [ "Z Index" ]
 
 [node name="player" parent="." index="2" instance=ExtResource( 4 )]
 
-position = Vector2( 602.528, 540.943 )
+position = Vector2( 637.87, 545.992 )
 
 [node name="wall" parent="." index="3" groups=[
 "floor",
@@ -55,7 +55,26 @@ scale = Vector2( 17.3557, 1 )
 mode = 1
 _sections_unfolded = [ "Angular", "Transform" ]
 
-[node name="win_area" type="Area2D" parent="." index="6"]
+[node name="wall4" parent="." index="6" groups=[
+"floor",
+] instance=ExtResource( 5 )]
+
+position = Vector2( 381.244, 244.633 )
+rotation = 0.425861
+scale = Vector2( 10.9883, 1 )
+mode = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="wall5" parent="." index="7" groups=[
+"floor",
+] instance=ExtResource( 5 )]
+
+position = Vector2( 1178.98, 108.311 )
+scale = Vector2( 10.9883, 1 )
+mode = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="win_area" type="Area2D" parent="." index="8"]
 
 position = Vector2( 517.018, -24.1174 )
 input_pickable = true

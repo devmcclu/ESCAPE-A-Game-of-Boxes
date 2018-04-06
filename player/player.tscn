@@ -1,7 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://player.gd" type="Script" id=1]
+[ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://Art/player.png" type="Texture" id=2]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -13,7 +14,7 @@ extents = Vector2( 31.9565, 32.0836 )
 custom_solver_bias = 0.0
 extents = Vector2( 31.9405, 32.1394 )
 
-[node name="player" type="RigidBody2D" index="0"]
+[node name="player" type="RigidBody2D"]
 
 position = Vector2( 615.15, 437.44 )
 input_pickable = false

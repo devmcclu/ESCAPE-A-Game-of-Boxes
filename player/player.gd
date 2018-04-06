@@ -49,5 +49,6 @@ func _on_player_body_entered(body):
 
 
 func _on_Area2D_area_entered(area):
+	get_tree().change_scene($"../".next_level)
 	print("winner winner")
 	pass # replace with function body

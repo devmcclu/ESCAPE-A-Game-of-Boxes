@@ -5,6 +5,7 @@ extends Node
 # var b = "textvar"
 
 export var blocks = 0
+export var next_level = "res://Level_X.tscn"
 
 func _ready():
 	# Called every time the node is added to the scene.
