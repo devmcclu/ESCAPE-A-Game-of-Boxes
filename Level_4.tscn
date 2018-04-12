@@ -72,12 +72,30 @@ _sections_unfolded = [ "Angular", "Transform" ]
 "floor",
 ] instance=ExtResource( 6 )]
 
-position = Vector2( 268.283, 283.858 )
-scale = Vector2( 8.02101, 1 )
+position = Vector2( 130, 360 )
+scale = Vector2( 4.82684, 1 )
 mode = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="win_area" type="Area2D" parent="." index="8"]
+[node name="wall5" parent="." index="8" groups=[
+"floor",
+] instance=ExtResource( 6 )]
+
+position = Vector2( 922.206, 360 )
+scale = Vector2( 4.82684, 1 )
+mode = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="wall6" parent="." index="9" groups=[
+"floor",
+] instance=ExtResource( 6 )]
+
+position = Vector2( 522.725, 165.71 )
+scale = Vector2( 4.82684, 1 )
+mode = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="win_area" type="Area2D" parent="." index="10"]
 
 position = Vector2( 517.018, -24.1174 )
 input_pickable = true

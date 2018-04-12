@@ -12,11 +12,11 @@
 custom_solver_bias = 0.0
 extents = Vector2( 495.888, 10 )
 
-[node name="Main" type="Node" index="0"]
+[node name="Main" type="Node"]
 
 script = ExtResource( 1 )
-blocks = 9
-next_level = "res://Level_X.tscn"
+blocks = 5
+next_level = "res://Level_4.tscn"
 
 [node name="NewLevelSound" parent="." index="0" instance=ExtResource( 2 )]
 

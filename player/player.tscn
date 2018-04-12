@@ -14,7 +14,7 @@ extents = Vector2( 31.9565, 32.0836 )
 custom_solver_bias = 0.0
 extents = Vector2( 31.9405, 32.1394 )
 
-[node name="player" type="RigidBody2D"]
+[node name="player" type="RigidBody2D" index="0"]
 
 position = Vector2( 615.15, 437.44 )
 input_pickable = false
@@ -24,7 +24,7 @@ mode = 2
 mass = 1.5
 friction = 1.0
 bounce = 0.0
-gravity_scale = 1.0
+gravity_scale = 1.5
 custom_integrator = false
 continuous_cd = 0
 contacts_reported = 1
@@ -43,7 +43,7 @@ __meta__ = {
 [node name="jump_sound" type="AudioStreamPlayer" parent="." index="0"]
 
 stream = ExtResource( 2 )
-volume_db = -20.0
+volume_db = -25.0
 autoplay = false
 mix_target = 0
 bus = "Master"

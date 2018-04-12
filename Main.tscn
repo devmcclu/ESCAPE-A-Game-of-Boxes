@@ -1,22 +1,22 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://Art/background.png" type="Texture" id=2]
-[ext_resource path="res://font/Comfortaa-Bold.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://GUI.tscn" type="PackedScene" id=4]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://wall.tscn" type="PackedScene" id=6]
-[ext_resource path="res://NewLevelSound.tscn" type="PackedScene" id=7]
+[ext_resource path="res://NewLevelSound.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Art/background.png" type="Texture" id=3]
+[ext_resource path="res://font/Comfortaa-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://GUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://wall.tscn" type="PackedScene" id=7]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 
 size = 24
 use_mipmaps = true
 use_filter = false
-font_data = ExtResource( 3 )
+font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 495.888, 10 )
@@ -27,14 +27,16 @@ script = ExtResource( 1 )
 blocks = 9
 next_level = "res://Level_2.tscn"
 
-[node name="background" type="Sprite" parent="." index="0"]
+[node name="NewLevelSound" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="background" type="Sprite" parent="." index="1"]
 
 position = Vector2( 521.715, 308.985 )
 scale = Vector2( 17.0875, 10.4661 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 _sections_unfolded = [ "Z Index" ]
 
-[node name="Label" type="Label" parent="." index="1"]
+[node name="Label" type="Label" parent="." index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -50,7 +52,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Space to Jump
 
 A to move Left
@@ -58,13 +60,16 @@ A to move Left
 D to move Right
 
 Left Mouse to
-Place Block"
+Place Block
+
+R to Restart the
+Level"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="2"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="3"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -72,24 +77,24 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="GUI" parent="CanvasLayer" index="0" instance=ExtResource( 4 )]
+[node name="GUI" parent="CanvasLayer" index="0" instance=ExtResource( 5 )]
 
 margin_right = 148.0
 margin_bottom = 80.0
 
-[node name="player" parent="." index="3" instance=ExtResource( 5 )]
+[node name="player" parent="." index="4" instance=ExtResource( 6 )]
 
 position = Vector2( 602.528, 540.943 )
 
-[node name="wall" parent="." index="4" groups=[
+[node name="wall" parent="." index="5" groups=[
 "floor",
-] instance=ExtResource( 6 )]
+] instance=ExtResource( 7 )]
 
 position = Vector2( 514.241, 609.514 )
 scale = Vector2( 17.3557, 1 )
 mode = 1
 
-[node name="wall2" parent="." index="5" instance=ExtResource( 6 )]
+[node name="wall2" parent="." index="6" instance=ExtResource( 7 )]
 
 position = Vector2( -5.79901, 94.5225 )
 rotation = 1.5708
@@ -97,7 +102,7 @@ scale = Vector2( 17.3557, 1 )
 mode = 1
 _sections_unfolded = [ "Angular", "Transform" ]
 
-[node name="wall3" parent="." index="6" instance=ExtResource( 6 )]
+[node name="wall3" parent="." index="7" instance=ExtResource( 7 )]
 
 position = Vector2( 1036.81, 86.949 )
 rotation = 1.5708
@@ -105,7 +110,7 @@ scale = Vector2( 17.3557, 1 )
 mode = 1
 _sections_unfolded = [ "Angular", "Transform" ]
 
-[node name="win_area" type="Area2D" parent="." index="7"]
+[node name="win_area" type="Area2D" parent="." index="8"]
 
 position = Vector2( 517.018, -24.1174 )
 input_pickable = true
@@ -121,8 +126,6 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="win_area" index="0"]
 
-shape = SubResource( 1 )
-
-[node name="NewLevelSound" parent="." index="8" instance=ExtResource( 7 )]
+shape = SubResource( 2 )
 
 

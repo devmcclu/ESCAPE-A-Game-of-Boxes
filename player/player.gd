@@ -18,8 +18,8 @@ func _process(delta):
 	#Checks if player is loaded to prevent premature block placement
 	if is_loaded == false:
 		pass
+	#Check if player has blocks available to place
 	else:
-		#Check if player has blocks available to place
 		if $"../".blocks != 0:
 			#place block on cursor position when left mouse is clicked
 			if Input.is_action_just_pressed("player_place_box"):
@@ -46,6 +46,9 @@ func _physics_process(delta):
 		self.apply_impulse(Vector2(0,0), Vector2(-speed,0))
 	if Input.is_action_pressed("player_right"):
 		self.apply_impulse(Vector2(0,0), Vector2(speed,0))
+	
+	if Input.is_action_just_pressed("restart_level"):
+		get_tree().reload_current_scene()
 
 func _on_player_body_entered(body):
 	#allow player to jump when touching floor

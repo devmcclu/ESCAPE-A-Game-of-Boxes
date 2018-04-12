@@ -5,7 +5,7 @@
 [node name="NewLevelSound" type="AudioStreamPlayer"]
 
 stream = ExtResource( 1 )
-volume_db = -10.0
+volume_db = -15.0
 autoplay = true
 mix_target = 0
 bus = "Master"
