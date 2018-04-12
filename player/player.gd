@@ -7,6 +7,7 @@ extends RigidBody2D
 var speed = 5
 var jump_height = 200
 var is_jumping = false
+var is_loaded = false
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -14,16 +15,20 @@ func _ready():
 	pass
 
 func _process(delta):
-	#Check if player has blocks available to place
-	if $"../".blocks != 0:
-		#place block on cursor position when left mouse is clicked
-		if Input.is_action_just_pressed("player_place_box"):
-			var new_block = load("res://block.tscn").instance()
-			$"../".add_child(new_block)
-			new_block.position = get_global_mouse_position()
-			print("block here")
-			#remove block placed from pool of blocks
-			$"../".blocks -= 1
+	#Checks if player is loaded to prevent premature block placement
+	if is_loaded == false:
+		pass
+	else:
+		#Check if player has blocks available to place
+		if $"../".blocks != 0:
+			#place block on cursor position when left mouse is clicked
+			if Input.is_action_just_pressed("player_place_box"):
+				var new_block = load("res://block.tscn").instance()
+				$"../".add_child(new_block)
+				new_block.position = get_global_mouse_position()
+				print("block here")
+				#remove block placed from pool of blocks
+				$"../".blocks -= 1
 
 func _physics_process(delta):
 	#PLayer jumps when jump key pressed
@@ -32,6 +37,7 @@ func _physics_process(delta):
 		if self.is_jumping == false:
 			self.is_jumping = true
 			self.apply_impulse(Vector2(0,0), Vector2(0,-jump_height))
+			$"jump_sound".play()
 		elif self.is_jumping == true:
 			print("why")
 			pass
@@ -51,4 +57,9 @@ func _on_player_body_entered(body):
 func _on_Area2D_area_entered(area):
 	get_tree().change_scene($"../".next_level)
 	print("winner winner")
+	pass # replace with function body
+
+
+func _on_wait_timer_timeout():
+	self.is_loaded = true
 	pass # replace with function body

@@ -1,45 +1,58 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://Art/background.png" type="Texture" id=2]
-[ext_resource path="res://GUI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://wall.tscn" type="PackedScene" id=5]
-
+[ext_resource path="res://NewLevelSound.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Art/background.png" type="Texture" id=3]
+[ext_resource path="res://GUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://wall.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 495.888, 10 )
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" index="0"]
 
 script = ExtResource( 1 )
 blocks = 9
 next_level = "res://Level_X.tscn"
 
-[node name="background" type="Sprite" parent="." index="0"]
+[node name="NewLevelSound" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="background" type="Sprite" parent="." index="1"]
 
 position = Vector2( 521.715, 308.985 )
 scale = Vector2( 17.0875, 10.4661 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 _sections_unfolded = [ "Z Index" ]
 
-[node name="GUI" parent="." index="1" instance=ExtResource( 3 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="2"]
 
-[node name="player" parent="." index="2" instance=ExtResource( 4 )]
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="GUI" parent="CanvasLayer" index="0" instance=ExtResource( 4 )]
+
+margin_right = 148.0
+margin_bottom = 80.0
+
+[node name="player" parent="." index="3" instance=ExtResource( 5 )]
 
 position = Vector2( 637.87, 545.992 )
 
-[node name="wall" parent="." index="3" groups=[
+[node name="wall" parent="." index="4" groups=[
 "floor",
-] instance=ExtResource( 5 )]
+] instance=ExtResource( 6 )]
 
 position = Vector2( 514.241, 609.514 )
 scale = Vector2( 17.3557, 1 )
 mode = 1
 
-[node name="wall2" parent="." index="4" instance=ExtResource( 5 )]
+[node name="wall2" parent="." index="5" instance=ExtResource( 6 )]
 
 position = Vector2( -5.79901, 94.5225 )
 rotation = 1.5708
@@ -47,7 +60,7 @@ scale = Vector2( 17.3557, 1 )
 mode = 1
 _sections_unfolded = [ "Angular", "Transform" ]
 
-[node name="wall3" parent="." index="5" instance=ExtResource( 5 )]
+[node name="wall3" parent="." index="6" instance=ExtResource( 6 )]
 
 position = Vector2( 1036.81, 86.949 )
 rotation = 1.5708
@@ -55,9 +68,9 @@ scale = Vector2( 17.3557, 1 )
 mode = 1
 _sections_unfolded = [ "Angular", "Transform" ]
 
-[node name="wall4" parent="." index="6" groups=[
+[node name="wall4" parent="." index="7" groups=[
 "floor",
-] instance=ExtResource( 5 )]
+] instance=ExtResource( 6 )]
 
 position = Vector2( 381.244, 244.633 )
 rotation = 0.425861
@@ -65,16 +78,16 @@ scale = Vector2( 10.9883, 1 )
 mode = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="wall5" parent="." index="7" groups=[
+[node name="wall5" parent="." index="8" groups=[
 "floor",
-] instance=ExtResource( 5 )]
+] instance=ExtResource( 6 )]
 
 position = Vector2( 1178.98, 108.311 )
 scale = Vector2( 10.9883, 1 )
 mode = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="win_area" type="Area2D" parent="." index="8"]
+[node name="win_area" type="Area2D" parent="." index="9"]
 
 position = Vector2( 517.018, -24.1174 )
 input_pickable = true

@@ -10,9 +10,9 @@ config_version=3
 
 [application]
 
-config/name="Outside-Box"
-run/main_scene="res://Main.tscn"
-config/icon="res://icon.png"
+config/name="Escape!: A Game of Boxes"
+run/main_scene="res://Main Menu.tscn"
+config/icon="res://new_icon.png"
 
 [input]
 

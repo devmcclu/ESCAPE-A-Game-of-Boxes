@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
-[ext_resource path="res://Art/player.png" type="Texture" id=2]
-
+[ext_resource path="res://sound/Jump3.wav" type="AudioStream" id=2]
+[ext_resource path="res://Art/player.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -40,17 +40,25 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="player_sprite" type="Sprite" parent="." index="0"]
+[node name="jump_sound" type="AudioStreamPlayer" parent="." index="0"]
 
-texture = ExtResource( 2 )
+stream = ExtResource( 2 )
+volume_db = -20.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="player_sprite" type="Sprite" parent="." index="1"]
+
+texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
 visible = false
 shape = SubResource( 1 )
 
-[node name="Area2D" type="Area2D" parent="." index="2"]
+[node name="Area2D" type="Area2D" parent="." index="3"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -64,8 +72,17 @@ audio_bus_name = "Master"
 
 shape = SubResource( 2 )
 
+[node name="wait_timer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_player_body_entered"]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+
+[connection signal="timeout" from="wait_timer" to="." method="_on_wait_timer_timeout"]
 
 
